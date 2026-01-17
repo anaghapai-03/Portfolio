@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   🌸 GLOBAL THEME
+========================= */
+@layer base {
+  :root {
+    /* BACKGROUND */
+    --background: 270 40% 96%;
+    --foreground: 260 20% 22%;
+
+    /* CARD – DARK TURQUOISE */
+    --card: 175 55% 22%;
+    --card-foreground: 0 0% 98%;
+    --card-back: 175 60% 18%;
+
+    /* UI COLORS */
+    --primary: 175 55% 50%;
+    --secondary: 270 35% 72%;
+    --border: 175 50% 30%;
+    --radius: 0.85rem;
+
+    /* FONTS */
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+
+    /* ✨ TURQUOISE GLOWS */
+    --glow-soft: 0 0 15px hsl(175 65% 55% / 0.4);
+    --glow-strong: 0 0 25px hsl(175 70% 60% / 0.65);
+
+    /* 🎨 GRADIENTS */
+    --gradient-main: linear-gradient(
+      135deg,
+      hsl(270 40% 96%),
+      hsl(175 45% 92%),
+      hsl(60 60% 97%)
+    );
+
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(175 60% 22%),
+      hsl(175 65% 16%)
+    );
+  }
+}
+
+/* =========================
+   🌐 BASE
+========================= */
+@layer base {
+  body {
+    background: var(--gradient-main);
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+/* =========================
+   🎴 CARD FLIP
+========================= */
+@layer components {
+  .card-flip {
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .card-flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--card-foreground));
+  }
+
+  .card-back {
+    background: var(--gradient-card);
+    box-shadow:
+      inset 0 0 18px hsl(175 70% 55% / 0.15),
+      var(--glow-soft);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .card-front {
+    transform: rotateY(180deg);
+    background: hsl(var(--card));
+    box-shadow:
+      inset 0 0 22px hsl(175 75% 60% / 0.25),
+      var(--glow-strong);
+    border: 1px solid hsl(var(--primary));
+  }
+
+  .card-flip:hover .card-back {
+    box-shadow:
+      inset 0 0 25px hsl(175 80% 65% / 0.25),
+      var(--glow-strong);
+  }
+
+  .matched-card .card-front {
+    box-shadow:
+      inset 0 0 30px hsl(175 85% 70% / 0.35),
+      0 0 35px hsl(175 80% 65% / 0.75);
+    border-color: hsl(var(--primary));
+  }
+}
+
+/* =========================
+   🧩 GRID
+========================= */
+@layer components {
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .game-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .game-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+/* =========================
+   ✨ UTILITIES
+========================= */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(
+      90deg,
+      hsl(270 35% 70%),
+      hsl(175 55% 55%)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .icon-glow {
+    filter: drop-shadow(0 0 10px hsl(175 75% 65% / 0.9));
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
