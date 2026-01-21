@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Circular background -->
+  <rect width="180" height="180" fill="url(#bgGradient)" rx="20"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="90" cy="90" r="85" fill="none" stroke="url(#textGradient)" stroke-width="2" opacity="0.3"/>
+  <circle cx="90" cy="90" r="78" fill="none" stroke="url(#textGradient)" stroke-width="1" opacity="0.2"/>
+  
+  <!-- APAI Text with geometric styling -->
+  <g id="apai-text">
+    <!-- A -->
+    <path d="M 30 140 L 50 50 L 70 140 M 40 110 L 60 110" fill="none" stroke="url(#textGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- P -->
+    <path d="M 85 140 L 85 50 L 105 50 Q 115 50 115 65 Q 115 80 105 80 L 85 80" fill="none" stroke="url(#textGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- A (second) -->
+    <path d="M 130 140 L 150 50 L 170 140 M 140 110 L 160 110" fill="none" stroke="url(#textGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- I -->
+    <line x1="90" y1="50" x2="90" y2="140" stroke="url(#textGradient)" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Accent dot -->
+  <circle cx="155" cy="35" r="4" fill="url(#textGradient)" opacity="0.8"/>
+</svg>
